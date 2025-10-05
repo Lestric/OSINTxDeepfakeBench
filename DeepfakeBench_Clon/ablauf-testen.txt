@@ -1,0 +1,60 @@
+Die Datei test.py ist ein Test-Skript, das vortrainierte Deepfake-Detektoren auf ausgewählten Datensätzen evaluiert. 
+Sie übernimmt dabei drei Hauptaufgaben:
+
+1. Config einlesen -> Welche Einstellungen gelten (z. B. Batchsize, welches Modell, welches Dataset).
+
+2. Daten vorbereiten -> Erstelle DataLoader für das Testen.
+
+3. Modell laden & testen -> Lade den gewünschten Detector + Gewichte und berechne die Metriken.
+
+
+Erklärung der wichtigsten Parts:
+
+1. Imports: cv2 (OpenCV zum Bilder laden/verarbeiten), torch (Deep Learning Framework), DeepfakeAbstractBaseDataset
+
+2. Config laden & mergen: test_config und config des Detektors laden
+
+3. Test-Daten vorbereiten: für jeden Eintrag in config['test_dataset'] wird ein eigener DataLoader gebaut.
+	DeepfakeAbstractBaseDataset (also abstract_dataset.py) liefert eine Liste der Dateipfade für jedes Bild + Label anhand der UADFV.json-Datei (aus dem Rearrangement Prozess: Train, Val, Test) für den Testdatensatz.
+	DataLoad wird zusammen mit dieser Liste, der verwendeten Batch Größe (siehe config der Detektoren) etc. initialisiert
+
+4. Modell aufbauen & Gewichte laden: siehe Teil mit model_class = DETECTOR[config['model_name']]; model = model_class(config).to(device); ckpt = torch.load(weights_path, map_location=device); model.load_state_dict(ckpt, strict=True)
+
+5. Inference-Pfad (Forwarddurchlauf des Modells auf unbekannten Daten)
+
+6. Testschleifen:
+	test_one_dataset(): Batchweise (Labels werden auf binär gemappt, 0 = real, 1 = fake) -> berechnet die Predictions
+	test_epoch(): über alle Batches hinweg, bis Ergebnisse für gesamten Testdatensatz berechnet wurden
+
+Unterschiede Effort und Xception während des Testens:
+- Effort & Xception nutzen beide eine Batchgröße von 32
+- Xception nutzt 32 Bilder pro Video (zb UADFV hat 49 Videos, wird nachher in Ordner unterteilt: real/fake -> beide haben jeweils 49 Unterordner für jedes Video einen mit jeweils 32 Bilder pro Ordner)
+- Effort nutzt hingegen lediglich 8 Bilder pro Video (sprich nicht den gesamten Ordner jedes Videos)
+-> entsprechend ergibt sich für Effort: 49 (Videos/Ordner) * 2 (real/fake) * 8 (Bilder pro Video) = 784 Bilder werden im Test verwendet -> 784 / 32 (Batchgröße) = 24,5 = 25 Batches
+-> für Xception: 49 * 2 * 32 (Bilder pro Video) = 3136 Bilder werden im Test genutzt -> 3136 / 32 (Batchgöße) = 98
+
+-> entsprechend habe ich auch in xception.yaml (unter training/config/config/detector/) unter frame_num: {'train': 32, 'test': 8} nun 8 statt 32 stehen
+-> bessere Vergleichbarkeit
+
+
+Änderungen:
+
+- Die pretrained Weights von Effort stammen aus einem Checkpoint des Trainings, bei dem mit nn.DataParallel gearbeitet wurde. Dadurch tragen alle Gewichte das Präfix module. (zb. module.backbone. ...). Damit die test.py damit umgehen kann, muss dieses Präfix entfernt werden. Dafür habe ich das Python-Skript convert_effort_ckpt.py geschrieben, dass die Gewichte in einer neuen Datei, effort_clip_L14_trainOn_FaceForensic_stripped.pth speichert, die dann zum Testen verwendet werden.
+
+- Änderungen an test.py: speichert nun sämtliche Metriken, um diese später in Abbildungen darstellen und analysieren zu können und gibt aus, wie viele Bilder genutzt wurden für den Test
+
+- Änderungen an preprocessing/preprocess.py: So angepasst, sodass sie besser und nur noch für die beiden verwendeten Datensätze funktionieren
+
+
+Insgesamtes Zusammenspiel: test.py, abstract_dataset.py, xception_detector.py, effort_detector.py:
+
+xception_detector.py:
+Verwendet Xception als Backbone (Config) -> training/networks/xception.py. Baut Backbone intern auf mit Gewichten. Baut Classifier auf. Übergibt die Bilder an das Backbone und gibt die resultierenden Feature Vektoren zurück (werden dann im Klassifikator genutzt). Ablauf wird über Funktion forward() geregelt. Ausgabe des Klassifikators wird über Softmax-Funktion zu einer Wahrscheinlichkeitsverteilung über die beiden möglichen Ausgaben transferiert. Rückgabe des Detektors sind die Feature-Vektoren, die ursprüngliche Vorhersage des Klassifikators und die folgende Wahrscheinlichkeitsverteilung.
+
+effort_detector.py: 
+Verwendet CLIP-ViT-L/14 als Backbone (training/networks/clip-vit-large-patch14) -> heruntergeladen von siehe Skript. Baut intern Backbone auf, wendet  SVD an und verwendet die vortrainierten Gewichte. Übergibt die Bilder an das Backbone und verwendet lediglich den Pooler Output, also die letzte Repräsentation des [CLS]-Tokens und gibt das als Feature Vektor zurück (werden dann im Klassifikator für die Entscheidung genutzt). Ablauf wird über die forward()-Funktion geregelt. Ausgabe des Klassifikators wird über Softmax-Funktion zu einer Wahrscheinlichkeitsverteilung über die beiden möglichen Ausgaben transferiert. Rückgabe des Detektors sind die Feature-Vektoren, die ursprüngliche Vorhersage des Klassifikators und die folgende Wahrscheinlichkeitsverteilung.
+
+test.py:
+Nimmt die  Config des Detektors, den Namen des Test-Datensatzes, die Gewichte, (den Output-Pfad für die Metriken und das Tag für das Ergebnis) entgegen.
+
+Er lädt den Detektor, initialisert ihn mit den Gewichten. Zunächst baut er mit dem Skript training/datset/abstract_datset.py gemeinsam mit der JSON Datei des Datensatzes den Trainingsdatensatz zusammen. Die JSON-Datei wird durch Rearrangement erstellt und enthält die Aufteilung des Datensatzes in einen Trainings-, einen Validierungs und einen Testteil. Dann startet er mit der Funktion test_epoch() den Test. Darin verwendet er die test_one_dataset()-Funktion um nacheinander die Ergebnisse der Detektoren entgegen zu nehmen (siehe effort_detector.py und xception_detector.py). Gleichzeitig wird ausgegeben, wieviele Bilder innerhalb des Testes verwendet werden. Dies wird durch die Config der Detektoren und der Größe des Datensatzes festgelegt (training/config/config/xception.yaml und training/config/config/effort.yaml). Falls das Speichern der Metriken und Ergebnisse über den Aufruf akriviert wurde, werden diese standardmäßig unter analysis_output/metrics gespeichert. Dieser Prozess erfolgt durch die Funktion _dump_metrics_json().

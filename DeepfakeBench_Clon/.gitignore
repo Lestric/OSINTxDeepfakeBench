@@ -1,0 +1,63 @@
+#ignore Aenderungen
+training/test.py
+training/config/detector/*.yaml
+preprocessing/config.yaml
+dataset/abstract_dataset.py
+analysis/*
+convert_effort_ckpt.py
+training/detectors/effort_detector.py
+
+# ----------------------------
+# Python Cache / Temp
+# ----------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# ----------------------------
+# Modelle & Checkpoints
+# ----------------------------
+*.pth
+*.pt
+*.ckpt
+*.onnx
+
+# ----------------------------
+# Training (nur Struktur behalten)
+# ----------------------------
+training/weights/**
+!training/weights/.gitkeep
+training/pretrained/**
+!training/pretrained/.gitkeep
+training/networks/clip-vit-large-patch14/**
+!training/networks/clip-vit-large-patch14/.gitkeep
+
+# ----------------------------
+# Datasets & Videos
+# ----------------------------
+datasets/**
+!datasets/.gitkeep
+data/
+videos/
+
+# ----------------------------
+# Analysis Outputs
+#   -> Ordner existieren, Inhalte standardmäßig ignorieren
+#   -> bestimmte Unterordner behalten (inkl. Inhalt)
+# ----------------------------
+analysis_outputs/**
+!analysis_outputs/.gitkeep
+!analysis_outputs/metrics/**
+!analysis_outputs/tables/**
+!analysis_outputs/plots/
+!analysis_outputs/plots/pr/**
+!analysis_outputs/plots/roc/**
+!analysis_outputs/plots/tsne/**
+
+# ----------------------------
+# Preprocessing: dataset_json (leer aber vorhanden)
+# ----------------------------
+preprocessing/dataset_json/**
+!preprocessing/dataset_json/.gitkeep

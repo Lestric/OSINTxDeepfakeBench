@@ -1,0 +1,54 @@
+training/test_config.yaml richtig setzen: an den markierten Stellen den Pfad anpassen
+
+-> die sehr abweichende Batchanzahl die in den Tests verwendet wird (DeepfakeDetection Datensatz hat 854 Batches bei 8 frames pro Video, da alle Videos zum Testen verwendet werden, also auch theoretisch die, auf denen trainiert wird) (Celeb-DF-v2 hat hingegen nur 130 Batches, obwohl der Datensatz viel größer ist, es kommt also nicht nur darauf an was die Batchgröße, die Anzahl der Frames pro Videos sind sondern auch auf die Anzahl der Videos die speziell für den Test sind, also siehe dataset_json)
+
+-> unter training/detectors/effort_detector.py build_backbone() -> os.path.expanduser auf den richtigen Pfad abändern
+
+vorher:
+conda activate DFBench
+
+Experiment 1: Generalisierung
+
+BASELINE-ERGEBNISSE: (in training/test.py in der main() train_result = True setzen -> nach Baseline wieder auf False)
+
+python3 training/test.py   --detector_path ./training/config/config/detector/xception.yaml   --test_dataset "FaceForensics++"   --weights_path ./training/weights/xception_best.pth   --exp gen --tag baseline   --metrics_outdir analysis_outputs/metrics
+
+WITHIN-DOMAIN-ERGEBNISSE:
+
+python3 training/test.py   --detector_path ./training/config/config/detector/xception.yaml   --test_dataset "FaceForensics++"   --weights_path ./training/weights/xception_best.pth   --exp gen --tag within-domain   --metrics_outdir analysis_outputs/metrics
+
+python3 training/test.py   --detector_path ./training/config/config/detector/effort.yaml   --test_dataset "FaceForensics++"   --weights_path ./training/weights/effort_clip_L14_trainOn_FaceForensic_stripped.pth   --exp gen --tag within-domain   --metrics_outdir analysis_outputs/metrics
+
+CROSS-DOMAIN-ERGEBNISSE:
+
+python3 training/test.py   --detector_path ./training/config/config/detector/xception.yaml   --test_dataset "FaceForensics++"   --weights_path ./training/weights/xception_best.pth   --exp gen --tag cross-domain   --metrics_outdir analysis_outputs/metrics
+
+python3 training/test.py   --detector_path ./training/config/config/detector/effort.yaml   --test_dataset "FaceForensics++"   --weights_path ./training/weights/effort_clip_L14_trainOn_FaceForensic_stripped.pth   --exp gen --tag cross-domain   --metrics_outdir analysis_outputs/metrics
+
+
+Experiment 2: Robustheit gegenüber realitätsnahen Bildmanipulationen
+
+SCHWARZ-WEIß:
+
+python3 training/test.py   --detector_path ./training/config/config/detector/xception.yaml   --test_dataset "Celeb-DF-v2-S_W"   --weights_path ./training/weights/xception_best.pth   --exp rob --tag schwarz-weiß   --metrics_outdir analysis_outputs/metrics
+
+
+
+Darstellungen der Ergebnisse:
+
+Tabellen (Exp 1 & Exp2) -> für die Namensgebung der Tabellen intern von exp1 auf exp2 ändern:
+(nutzt standardmäßig die Output-Metriken von test.py unter analysis_output/metrics/ und speichert unter analysis_output/tables)
+python analysis/create_tables.py
+
+ROC-AUC:
+(nutzt standardmäßig die Output-Metriken von test.py unter analysis_output/metrics/ und speichert unter analysis_output/plots/roc/)
+python analysis/plot_roc.py
+
+Precision-Recall: -> falls verwendet werden soll, muss in die Tabellen wieder AP aufgenommen werden, Precision-Recall basiert darauf
+(nutzt standardmäßig die Output-Metriken von test.py unter analysis_output/metrics/ und speichert unter analysis_output/plots/pr/)
+python analysis/plot_pr.py
+
+T-SNE: -> prüfen ob die Parameter ok sind die intern verwendet werden (max points, perplexity, learning rate, seed, pca-dim)
+(nutzt standardmäßig die Output-Metriken von test.py unter analysis_output/metrics/ und speichert unter analysis_output/plots/tsne/)
+python analysis/plot_tsne.py
+ 

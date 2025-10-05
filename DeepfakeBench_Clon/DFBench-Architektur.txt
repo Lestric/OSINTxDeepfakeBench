@@ -1,0 +1,50 @@
+In dieser Datei wird erklärt, was das Tool DFBench bietet und wie die einzelnen Schritte aussehen.
+
+-> Es ist eine Beschreibung des Architektur-Bildes (figures/archi.png)
+
+DeepfakeBench besteht aus drei Hauptmodulen:
+
+1. Data Processing Module (Datenverarbeitung)
+Dies ist der erste Schritt im Workflow. Hier wird der Datensatz vorbereitet:
+Input: Ein Datensatz aus Deepfake-Videos (z. B. FF++ oder Celeb-DF).
+Schritte:
+- Extract Frames: Aus jedem Video werden einzelne Bilder extrahiert.
+- Detect Landmarks: Erkennung von Gesichtsmerkmalen wie Augen, Nase etc.
+- Align & Crop Faces: Die Gesichter werden ausgerichtet und zugeschnitten.
+- Forgery Regions (optional): Bereiche mit Fälschungen werden markiert, wenn verfügbar.
+
+- Data Arrangement: Aufteilung der Daten in Train, Validation und Test. Dabei wird eine JSON-Datei erstellt, die die Pfade zu Bildern, Masken, Landmarken etc. enthält.
+
+- Custom Parameters: Einstellungen werden in einer *.yaml Datei konfiguriert (z. B. Auflösung, Datensatzpfade, Trainingsoptionen).
+
+
+2. Training Module (Modelltraining)
+Hier werden verschiedene Modelle trainiert, um Deepfakes zu erkennen. Es gibt drei Typen von Detektoren:
+
+Naïve Detector:
+Nutzt ein Standard-CNN-Modell.
+Ziel: Klassifikation Fake vs. Real basierend auf den Rohbildern.
+
+Spatial Detector:
+Erweitert den Naïve Detector um zusätzliche Raum-Merkmale (z. B. durch besondere Architekturen oder zusätzliche Algorithmen).
+
+Frequency Detector:
+Nutzt Frequenztransformationen (wie FFT), um typische Artefakte von Deepfakes zu erkennen.
+Diese Artefakte werden einem CNN-Modell übergeben.
+
+
+3. Evaluation & Analysis Module (Auswertung & Analyse)
+Nach dem Training folgt die Evaluation und Analyse der Ergebnisse:
+
+Evaluation Tools:
+- ROC-AUC
+- Precision-Recall
+- AP Bar Charts
+- Radar Charts
+- Heat Maps
+
+Analyse-Tools:
+- Grad-CAM: Visualisierung, wo das Modell im Bild hinschaut.
+- Frequency Analysis: Frequenzräume der Bilder zur Erkennung typischer Deepfake-Artefakte.
+- t-SNE: Reduktion von Feature-Dimensionen zur Visualisierung der Trennung von Fake und Real.
+- Custom Visualizations: Z. B. Gesichtsröntgen-Ansicht oder Maskenvergleich.

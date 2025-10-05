@@ -1,0 +1,10 @@
+2025-08-27 13:00:15,708 - INFO - 363 videos found in /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23
+2025-08-27 13:00:18,882 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-08-27 13:00:20,367 - WARNING - No faces in frame 18 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__kitchen_pan.mp4
+2025-08-27 13:00:21,634 - WARNING - No faces in frame 19 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-08-27 13:00:22,898 - WARNING - No faces in frame 29 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-08-27 13:00:24,215 - WARNING - No faces in frame 39 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-08-27 13:00:25,397 - WARNING - No faces in frame 49 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-08-27 13:00:48,216 - WARNING - No faces in frame 532 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__hugging_happy.mp4
+2025-08-27 13:00:53,684 - WARNING - No faces in frame 633 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__hugging_happy.mp4
+2025-09-03 19:09:29,117 - ERROR - Dataset path does not exist: ../datasets/rgb/DeepFakeDetection

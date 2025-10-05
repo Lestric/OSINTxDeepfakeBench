@@ -1,0 +1,41 @@
+In dieser Datei wird der Aufbau und die Struktur von DFBench erklärt.
+
+/DeepfakeBench
++-- analysis/
++-- datasets/
++-- figures/
++-- preprocessing/
++-- training/
++-- install.sh
++-- LICENSE
++-- README.md
++-- train.sh
+
+analysis/
+Zweck: Enthält Skripte und Tools zur Auswertung der Ergebnisse.
+Beispiele: Auswertung von Testläufen, Plotten von Metriken wie Accuracy, etc.
+
+datasets/
+Zweck: Beinhaltet den Zugriff auf die eigentlichen Datensätze
+Wichtig: Hier greift das Training auf die Datenquellen zu (RGB oder LMDB).
+
+figures/
+Zweck: Visualisierungen für das Paper oder zur Dokumentation
+Beispiel: Bislang nur Architektur von DFBench
+
+preprocessing/
+Zweck: Hier sind alle Skripte zur Vorverarbeitung der Deepfake-Datensätze.
+Typische Aufgaben: (oberen 4 Punkt in preprocessing/preprocessing.py letzter in rearrange.py) 
+- Extrahieren von Frames aus Videos
+- Zuschneiden von Gesichtern (Align & Crop Faces)
+- Detect Landmarks
+- Erstellen von LMDB-Datenbanken
+- Data Arrangement: Strukturieren der Daten wie in den JSON-Dateien (aufteilen in Train, Test, Val) -> sehr wichtig sonst ist Evaluation fürn arsch
+
+
+training/
+Zweck: Der Kern der Trainingspipeline:
+- Modelle (ResNet, EfficientNet, etc.)
+- Trainingslogik (z. B. PyTorch-Code)
+- Konfigurationsdateien (.json)
+
