@@ -8,7 +8,6 @@ from PIL import Image
 import io
 import numpy as np
 def file_to_binary(file_path):
-    """将图片转换为二进制数据"""
     if file_path.endswith('.npy'):
         data = np.load(file_path)
         file_binary = data.tobytes()

@@ -1,0 +1,18 @@
+{
+  "detector": "effort",
+  "dataset": "Celeb-DF-v2",
+  "exp": "gen",
+  "tag": "Cross-Domain",
+  "mode": "frame",
+  "count_total": 1036,
+  "count_used": 1036,
+  "metrics": {
+    "auc": 0.9033212161269002,
+    "acc": 0.834942084942085,
+    "eer": 0.13202247191011235,
+    "ap": 0.935044822434885
+  },
+  "y_true_path": "analysis_output/metrics/effort__Celeb-DF-v2__gen-Cross-Domain_y_true.npy",
+  "y_score_path": "analysis_output/metrics/effort__Celeb-DF-v2__gen-Cross-Domain_y_score.npy",
+  "feat_path": "analysis_output/metrics/effort__Celeb-DF-v2__gen-Cross-Domain_feat.npy"
+}

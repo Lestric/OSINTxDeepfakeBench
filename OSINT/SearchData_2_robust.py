@@ -50,14 +50,14 @@ def scroll_and_collect_articles(driver, max_scroll_attempts=20, wait_secs=5):
             break
         current = driver.find_elements(By.CSS_SELECTOR, "article")
         if len(current) == previous_count:
-            logger.info("Keine Zunahme der Tweets  Abbruch des Scrollens.")
+            logger.info("Keine Zunahme der Tweets Abbruch des Scrollens.")
             break
         previous_count = len(current)
         logger.info(f"Scroll {attempt}: Tweets insgesamt {previous_count}")
     return driver.find_elements(By.CSS_SELECTOR, "article")
 
 # ------------------------------
-# Strategien AD
+# Strategien AD
 # ------------------------------
 def extract_status_urls_with_strategies(driver):
     """
@@ -141,7 +141,7 @@ def extract_status_urls_with_strategies(driver):
     except Exception:
         pass
 
-    logger.info(f"Gesamtzahl Kandidaten-URLs (AD, unique): {len(ordered_urls)}")
+    logger.info(f"Gesamtzahl Kandidaten-URLs (AD, unique): {len(ordered_urls)}")
     return ordered_urls
 
 # ------------------------------
@@ -170,12 +170,12 @@ def run_ytdlp(url, out_template, cookies_from_browser=None, quiet=True):
 # Hauptfunktion
 # ------------------------------
 def download_videos(username, max_videos=10, cookies_from_browser=None):
-    """Identifiziert Video-Tweets (AD) und lädt sie mit yt-dlp herunter."""
+    """Identifiziert Video-Tweets (AD) und lädt sie mit yt-dlp herunter."""
     driver = None
     try:
         # Zielverzeichnis
         heutiges_datum = date.today().strftime("%Y-%m-%d")
-        base_dir = os.path.join(os.path.expanduser("~"), "OSINTxDeepfakeBench/OSINT/Research_Data")
+        base_dir = os.path.join(os.path.expanduser("~"), "OSINTxDeepfakeBench/OSINT/Research_Data/videos")
         save_path = os.path.join(base_dir, f"{username}_{heutiges_datum}")
         os.makedirs(save_path, exist_ok=True)
 
@@ -191,7 +191,7 @@ def download_videos(username, max_videos=10, cookies_from_browser=None):
         WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.CSS_SELECTOR, "article")))
         logger.info("Erste Tweets geladen.")
 
-        # Kandidaten-URLs via AD extrahieren
+        # Kandidaten-URLs via AD extrahieren
         candidate_urls = extract_status_urls_with_strategies(driver)
 
         # Downloads starten

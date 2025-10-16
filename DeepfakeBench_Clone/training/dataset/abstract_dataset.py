@@ -342,13 +342,13 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
         if not self.lmdb:
             #if not file_path[0] == '.':
                 #file_path =  f'./{self.config["rgb_dir"]}\\'+file_path
-            
             assert os.path.exists(file_path), f"{file_path} does not exist"
             img = cv2.imread(file_path)
             if img is None:
                 raise ValueError('Loaded image is None: {}'.format(file_path))
         elif self.lmdb:
             key = self._lmdb_key_from_abs_rgb(file_path)
+            #print(f"key:{key}")
             with self.env.begin(write=False) as txn:
                 image_bin = txn.get(key.encode('utf-8'))
                 if image_bin is None:
@@ -358,6 +358,7 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
                         f"  expected key : {key}\n"
                         "Prüfe, ob die LMDB mit Forward-Slashes erstellt wurde und ob der Key existiert.")
                 buf = np.frombuffer(image_bin, dtype=np.uint8)
+                #print("salam2")
                 img = cv2.imdecode(buf, cv2.IMREAD_COLOR)
                 if img is None:
                     raise ValueError(f"cv2.imdecode failed for LMDB key: {key}")
@@ -543,8 +544,8 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
                 image = self.load_rgb(image_path)
             except Exception as e:
             # Fehler beim Laden des Bildes - Protokolliere den Pfad, der Probleme macht
-                print(f"Error loading image at index {index}: {e}")
-                print(f"Trying to load image at path: {image_path}")
+                #print(f"Error loading image at index {index}: {e}")
+                #print(f"Trying to load image at path: {image_path}")
                 # Vermeide Endlosschleifen, indem du eine sichere Alternative implementierst!
                 return self.__getitem__(0)
             # Wenn das Laden erfolgreich war, wandle das Bild in ein NumPy-Array um

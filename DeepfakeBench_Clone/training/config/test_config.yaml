@@ -1,7 +1,9 @@
 mode: test
 lmdb: true
 rgb_dir: ''
-lmdb_dir:  '/home/user/OSINTxDeepfakeBench/OSINT/Research_Data' # hier Pfad ändern
+####hier kann ich für test durchläufe die lmdb verlinken
+#lmdb_dir:  '/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/lmdb' # hier Pfad ändern
+lmdb_dir:  '/home/user/datasets/lmdb'
 dataset_json_folder: '/home/user/OSINTxDeepfakeBench/DeepfakeBench_Clone/preprocessing/dataset_json'
 label_dict:
   # DFD

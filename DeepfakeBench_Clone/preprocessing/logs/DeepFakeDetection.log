@@ -8,3 +8,119 @@
 2025-08-27 13:00:48,216 - WARNING - No faces in frame 532 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__hugging_happy.mp4
 2025-08-27 13:00:53,684 - WARNING - No faces in frame 633 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__hugging_happy.mp4
 2025-09-03 19:09:29,117 - ERROR - Dataset path does not exist: ../datasets/rgb/DeepFakeDetection
+2025-10-16 18:31:49,781 - INFO - 363 videos found in /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23
+2025-10-16 18:31:52,343 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-10-16 18:31:53,854 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__outside_talking_pan_laughing.mp4
+2025-10-16 18:31:54,339 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:31:55,009 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walk_down_hall_angry.mp4
+2025-10-16 18:31:56,844 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__kitchen_pan.mp4
+2025-10-16 18:31:58,560 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__outside_talking_pan_laughing.mp4
+2025-10-16 18:31:59,779 - WARNING - No faces in frame 11 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walk_down_hall_angry.mp4
+2025-10-16 18:32:00,020 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walking_outside_cafe_disgusted.mp4
+2025-10-16 18:32:00,073 - WARNING - No faces in frame 18 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__kitchen_pan.mp4
+2025-10-16 18:32:00,149 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walk_down_hall_angry.mp4
+2025-10-16 18:32:00,386 - WARNING - No faces in frame 19 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-10-16 18:32:00,456 - WARNING - No faces in frame 31 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:01,155 - WARNING - No faces in frame 23 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walk_down_hall_angry.mp4
+2025-10-16 18:32:01,455 - WARNING - No faces in frame 13 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walk_down_hall_angry.mp4
+2025-10-16 18:32:01,536 - WARNING - No faces in frame 29 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-10-16 18:32:02,606 - WARNING - No faces in frame 35 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walk_down_hall_angry.mp4
+2025-10-16 18:32:02,866 - WARNING - No faces in frame 26 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walk_down_hall_angry.mp4
+2025-10-16 18:32:02,887 - WARNING - No faces in frame 39 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-10-16 18:32:03,735 - WARNING - No faces in frame 93 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:03,873 - WARNING - No faces in frame 95 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__meeting_serious.mp4
+2025-10-16 18:32:04,188 - WARNING - No faces in frame 49 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-10-16 18:32:04,213 - WARNING - No faces in frame 39 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walk_down_hall_angry.mp4
+2025-10-16 18:32:05,428 - WARNING - No faces in frame 126 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__meeting_serious.mp4
+2025-10-16 18:32:05,584 - WARNING - No faces in frame 52 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walk_down_hall_angry.mp4
+2025-10-16 18:32:07,066 - WARNING - No faces in frame 65 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walk_down_hall_angry.mp4
+2025-10-16 18:32:08,465 - WARNING - No faces in frame 190 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__meeting_serious.mp4
+2025-10-16 18:32:08,481 - WARNING - No faces in frame 197 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__secret_conversation.mp4
+2025-10-16 18:32:09,904 - WARNING - No faces in frame 230 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__secret_conversation.mp4
+2025-10-16 18:32:12,553 - WARNING - No faces in frame 285 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__meeting_serious.mp4
+2025-10-16 18:32:14,895 - WARNING - No faces in frame 342 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:15,132 - WARNING - No faces in frame 349 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__meeting_serious.mp4
+2025-10-16 18:32:24,182 - WARNING - No faces in frame 559 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:25,511 - WARNING - No faces in frame 590 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:27,313 - WARNING - No faces in frame 532 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__hugging_happy.mp4
+2025-10-16 18:32:30,424 - WARNING - No faces in frame 723 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__secret_conversation.mp4
+2025-10-16 18:32:31,841 - WARNING - No faces in frame 756 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__secret_conversation.mp4
+2025-10-16 18:32:32,483 - WARNING - No faces in frame 633 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__hugging_happy.mp4
+2025-10-16 18:32:32,788 - WARNING - No faces in frame 648 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__hugging_happy.mp4
+2025-10-16 18:32:36,166 - WARNING - No faces in frame 295 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walking_outside_cafe_disgusted.mp4
+2025-10-16 18:32:36,792 - WARNING - No faces in frame 304 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__exit_phone_room.mp4
+2025-10-16 18:32:37,082 - WARNING - No faces in frame 351 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__exit_phone_room.mp4
+2025-10-16 18:32:37,085 - INFO - Current time: 2025-10-16 18:32:37
+2025-10-16 18:32:37,782 - WARNING - No faces in frame 870 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:37,788 - INFO - Current time: 2025-10-16 18:32:37
+2025-10-16 18:32:37,937 - WARNING - No faces in frame 617 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__outside_talking_pan_laughing.mp4
+2025-10-16 18:32:38,550 - WARNING - No faces in frame 363 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__exit_phone_room.mp4
+2025-10-16 18:32:38,550 - INFO - Current time: 2025-10-16 18:32:38
+2025-10-16 18:32:38,932 - WARNING - No faces in frame 559 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__kitchen_pan.mp4
+2025-10-16 18:32:39,016 - INFO - Current time: 2025-10-16 18:32:39
+2025-10-16 18:32:39,287 - WARNING - No faces in frame 901 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:39,372 - INFO - Current time: 2025-10-16 18:32:39
+2025-10-16 18:32:40,537 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__kitchen_pan.mp4
+2025-10-16 18:32:40,667 - WARNING - No faces in frame 404 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walk_down_hall_angry.mp4
+2025-10-16 18:32:41,139 - WARNING - No faces in frame 625 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__outside_talking_pan_laughing.mp4
+2025-10-16 18:32:41,141 - WARNING - No faces in frame 590 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__kitchen_pan.mp4
+2025-10-16 18:32:41,141 - WARNING - No faces in frame 660 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__outside_talking_pan_laughing.mp4
+2025-10-16 18:32:41,144 - INFO - Current time: 2025-10-16 18:32:41
+2025-10-16 18:32:41,149 - WARNING - No faces in frame 609 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walking_down_street_outside_angry.mp4
+2025-10-16 18:32:41,220 - WARNING - No faces in frame 760 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__hugging_happy.mp4
+2025-10-16 18:32:41,707 - INFO - Current time: 2025-10-16 18:32:41
+2025-10-16 18:32:41,918 - WARNING - No faces in frame 932 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__secret_conversation.mp4
+2025-10-16 18:32:42,355 - INFO - Current time: 2025-10-16 18:32:42
+2025-10-16 18:32:42,362 - INFO - Current time: 2025-10-16 18:32:42
+2025-10-16 18:32:42,373 - INFO - Current time: 2025-10-16 18:32:42
+2025-10-16 18:32:43,458 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__outside_talking_pan_laughing.mp4
+2025-10-16 18:32:44,048 - WARNING - No faces in frame 576 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walking_outside_cafe_disgusted.mp4
+2025-10-16 18:32:44,394 - WARNING - No faces in frame 833 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walking_down_indoor_hall_disgust.mp4
+2025-10-16 18:32:44,410 - INFO - Current time: 2025-10-16 18:32:44
+2025-10-16 18:32:44,699 - INFO - Current time: 2025-10-16 18:32:44
+2025-10-16 18:32:44,995 - INFO - Current time: 2025-10-16 18:32:44
+2025-10-16 18:32:45,274 - INFO - Current time: 2025-10-16 18:32:45
+2025-10-16 18:32:45,748 - INFO - Current time: 2025-10-16 18:32:45
+2025-10-16 18:32:45,748 - INFO - Current time: 2025-10-16 18:32:45
+2025-10-16 18:32:46,105 - INFO - Current time: 2025-10-16 18:32:46
+2025-10-16 18:32:46,106 - WARNING - No faces in frame 27 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__secret_conversation.mp4
+2025-10-16 18:32:46,397 - INFO - Current time: 2025-10-16 18:32:46
+2025-10-16 18:32:46,927 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__walk_down_hall_angry.mp4
+2025-10-16 18:32:47,368 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__walking_down_street_outside_angry.mp4
+2025-10-16 18:32:47,842 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__walking_outside_cafe_disgusted.mp4
+2025-10-16 18:32:47,897 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__exit_phone_room.mp4
+2025-10-16 18:32:47,901 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__kitchen_pan.mp4
+2025-10-16 18:32:48,395 - WARNING - No faces in frame 743 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walking_down_street_outside_angry.mp4
+2025-10-16 18:32:48,862 - WARNING - No faces in frame 18 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__walk_down_hall_angry.mp4
+2025-10-16 18:32:48,975 - WARNING - No faces in frame 55 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__secret_conversation.mp4
+2025-10-16 18:32:49,282 - WARNING - No faces in frame 16 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__kitchen_pan.mp4
+2025-10-16 18:32:50,001 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__outside_talking_pan_laughing.mp4
+2025-10-16 18:32:52,178 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__walk_down_hall_angry.mp4
+2025-10-16 18:32:52,594 - WARNING - No faces in frame 1084 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/02__walking_and_outside_surprised.mp4
+2025-10-16 18:32:53,350 - WARNING - No faces in frame 1084 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/01__walking_and_outside_surprised.mp4
+2025-10-16 18:32:53,637 - WARNING - No faces in frame 10 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__walk_down_hall_angry.mp4
+2025-10-16 18:32:55,028 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__walking_outside_cafe_disgusted.mp4
+2025-10-16 18:32:55,615 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__kitchen_pan.mp4
+2025-10-16 18:32:55,631 - WARNING - No faces in frame 0 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__exit_phone_room.mp4
+2025-10-16 18:32:55,676 - WARNING - No faces in frame 21 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__walk_down_hall_angry.mp4
+2025-10-16 18:32:56,610 - WARNING - No faces in frame 58 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__secret_conversation.mp4
+2025-10-16 18:32:57,174 - WARNING - No faces in frame 32 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__walk_down_hall_angry.mp4
+2025-10-16 18:32:57,189 - WARNING - No faces in frame 16 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__exit_phone_room.mp4
+2025-10-16 18:32:58,755 - WARNING - No faces in frame 33 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__exit_phone_room.mp4
+2025-10-16 18:32:58,865 - WARNING - No faces in frame 43 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__walk_down_hall_angry.mp4
+2025-10-16 18:32:59,106 - WARNING - No faces in frame 52 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__hugging_happy.mp4
+2025-10-16 18:33:00,413 - WARNING - No faces in frame 54 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__walk_down_hall_angry.mp4
+2025-10-16 18:33:00,441 - WARNING - No faces in frame 50 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__exit_phone_room.mp4
+2025-10-16 18:33:02,077 - WARNING - No faces in frame 66 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__exit_phone_room.mp4
+2025-10-16 18:33:04,799 - WARNING - No faces in frame 132 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__hugging_happy.mp4
+2025-10-16 18:33:06,766 - WARNING - No faces in frame 158 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__hugging_happy.mp4
+2025-10-16 18:33:10,354 - WARNING - No faces in frame 211 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__hugging_happy.mp4
+2025-10-16 18:33:13,644 - WARNING - No faces in frame 324 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__secret_conversation.mp4
+2025-10-16 18:33:18,953 - WARNING - No faces in frame 440 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__secret_conversation.mp4
+2025-10-16 18:33:19,232 - WARNING - No faces in frame 343 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__hugging_happy.mp4
+2025-10-16 18:33:19,247 - WARNING - No faces in frame 412 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__secret_conversation.mp4
+2025-10-16 18:33:22,272 - WARNING - No faces in frame 495 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__secret_conversation.mp4
+2025-10-16 18:33:22,884 - WARNING - No faces in frame 396 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__hugging_happy.mp4
+2025-10-16 18:33:23,159 - WARNING - No faces in frame 471 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/04__secret_conversation.mp4
+2025-10-16 18:33:23,996 - WARNING - No faces in frame 522 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/03__secret_conversation.mp4
+2025-10-16 18:33:24,691 - WARNING - No faces in frame 422 of /home/user/datasets/rgb/DeepFakeDetection/original_sequences/actors/c23/videos/05__hugging_happy.mp4
