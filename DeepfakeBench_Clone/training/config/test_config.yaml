@@ -1,8 +1,8 @@
 mode: test
 lmdb: true
 rgb_dir: ''
-lmdb_dir:  '/home/user/datasets/lmdb' # hier Pfad ändern
-dataset_json_folder: '/home/user/DeepfakeBench/preprocessing/dataset_json'
+lmdb_dir:  '/home/user/OSINTxDeepfakeBench/OSINT/Research_Data' # hier Pfad ändern
+dataset_json_folder: '/home/user/OSINTxDeepfakeBench/DeepfakeBench_Clone/preprocessing/dataset_json'
 label_dict:
   # DFD
   DFD_fake: 1
@@ -36,3 +36,6 @@ label_dict:
   # Roop
   roop_Real: 0
   roop_Fake: 1
+  #Lestric OSINT für Bewertung zwei variablen angeben
+  OSINT_Real: 0
+  OSINT_Fake: 1

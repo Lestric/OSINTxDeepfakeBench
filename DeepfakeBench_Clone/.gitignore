@@ -7,6 +7,9 @@ analysis/*
 convert_effort_ckpt.py
 training/detectors/effort_detector.py
 
+# analysis/* Ornder kann mit hoch nur dateien anpassen: create_tables (von jano) und alle plot_roc (und alle plot_...)-> die erzeugen
+# die Metriken
+
 # ----------------------------
 # Python Cache / Temp
 # ----------------------------
