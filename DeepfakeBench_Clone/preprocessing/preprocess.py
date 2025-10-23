@@ -458,9 +458,12 @@ if __name__ == '__main__':
         # mask_dataset_names = []
         mask_dataset_paths = [Path(os.path.join(dataset_path, name)) for name in mask_dataset_names]
     ####OSINT
-    elif dataset_name == 'Research_Data':
-        sub_dataset_names = ["videos"]
-        sub_dataset_paths = [Path(os.path.join(dataset_path, name, comp)) for name in sub_dataset_names]
+    elif dataset_name == 'OSINT':
+    # robust: zeige auf Research_Data, nicht auf videos/OSINT
+        research_data = Path(dataset_root_path) / 'OSINT' / 'Research_Data'
+        if not research_data.exists():
+            research_data = Path(dataset_root_path) / 'Research_Data'
+        sub_dataset_paths = [research_data / 'videos']  # kein comp-Unterordner!
     ## DeepFakeDetection
     elif dataset_name == 'DeepFakeDetection':
         sub_dataset_names = ["original_sequences/actors",

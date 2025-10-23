@@ -1,0 +1,18 @@
+{
+  "detector": "effort",
+  "dataset": "FaceForensics++",
+  "exp": "gen",
+  "tag": "Cross-Domain",
+  "mode": "frame",
+  "count_total": 1400,
+  "count_used": 1400,
+  "metrics": {
+    "auc": 0.9265529336734694,
+    "acc": 0.8521428571428571,
+    "eer": 0.15,
+    "ap": 0.9810856408505204
+  },
+  "y_true_path": "analysis_output/metrics/effort__FaceForensics++__gen-Cross-Domain_y_true.npy",
+  "y_score_path": "analysis_output/metrics/effort__FaceForensics++__gen-Cross-Domain_y_score.npy",
+  "feat_path": "analysis_output/metrics/effort__FaceForensics++__gen-Cross-Domain_feat.npy"
+}

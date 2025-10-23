@@ -1,9 +1,9 @@
 mode: train
 lmdb: True
 dry_run: false
-rgb_dir: './datasets/rgb'
-lmdb_dir:  './datasets/lmdb'
-dataset_json_folder: './preprocessing/dataset_json'
+rgb_dir: '~/datasets/rgb'
+lmdb_dir:  '/home/user/datasets/lmdb'
+dataset_json_folder: '/home/user/OSINTxDeepfakeBench/DeepfakeBench_Clone/preprocessing/dataset_json'
 SWA: False
 save_avg: True
 log_dir: ./logs/training/
@@ -41,3 +41,6 @@ label_dict:
   # Roop
   roop_Real: 0
   roop_Fake: 1
+  #OSINT
+  OSINT_Real: 0
+  OSINT_Fake: 1

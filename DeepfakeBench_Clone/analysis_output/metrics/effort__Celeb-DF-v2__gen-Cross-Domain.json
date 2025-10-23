@@ -7,10 +7,10 @@
   "count_total": 1036,
   "count_used": 1036,
   "metrics": {
-    "auc": 0.9033212161269002,
-    "acc": 0.834942084942085,
-    "eer": 0.13202247191011235,
-    "ap": 0.935044822434885
+    "auc": 0.8254089557171183,
+    "acc": 0.7335907335907336,
+    "eer": 0.26685393258426965,
+    "ap": 0.9098026221974997
   },
   "y_true_path": "analysis_output/metrics/effort__Celeb-DF-v2__gen-Cross-Domain_y_true.npy",
   "y_score_path": "analysis_output/metrics/effort__Celeb-DF-v2__gen-Cross-Domain_y_score.npy",

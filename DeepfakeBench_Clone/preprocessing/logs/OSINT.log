@@ -1,0 +1,83 @@
+2025-10-23 20:38:36,788 - ERROR - Dataset path does not exist: /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/OSINT
+2025-10-23 21:02:08,790 - ERROR - Dataset path does not exist: /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/OSINT
+2025-10-23 21:03:08,473 - INFO - 4 videos found in /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos
+2025-10-23 21:03:09,877 - WARNING - No faces in frame 0 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:09,914 - WARNING - No faces in frame 0 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:10,250 - WARNING - No faces in frame 14 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:10,303 - WARNING - No faces in frame 250 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:10,341 - WARNING - No faces in frame 0 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:10,563 - WARNING - No faces in frame 28 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:10,746 - WARNING - No faces in frame 501 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:10,875 - WARNING - No faces in frame 42 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:11,180 - WARNING - No faces in frame 752 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:11,184 - WARNING - No faces in frame 57 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:11,347 - WARNING - No faces in frame 252 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:11,499 - WARNING - No faces in frame 71 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:11,597 - WARNING - No faces in frame 1002 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:11,810 - WARNING - No faces in frame 85 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:12,022 - WARNING - No faces in frame 1253 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:12,120 - WARNING - No faces in frame 100 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:12,345 - WARNING - No faces in frame 505 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:12,429 - WARNING - No faces in frame 114 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:12,475 - WARNING - No faces in frame 1504 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:12,759 - WARNING - No faces in frame 128 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:12,920 - WARNING - No faces in frame 1754 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:13,070 - WARNING - No faces in frame 142 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:13,329 - WARNING - No faces in frame 2005 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:13,335 - WARNING - No faces in frame 758 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:13,391 - WARNING - No faces in frame 157 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:13,705 - WARNING - No faces in frame 171 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:13,756 - WARNING - No faces in frame 2256 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:14,015 - WARNING - No faces in frame 185 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:14,167 - WARNING - No faces in frame 2507 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:14,324 - WARNING - No faces in frame 200 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:14,576 - WARNING - No faces in frame 2757 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:15,009 - WARNING - No faces in frame 3008 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:15,307 - WARNING - No faces in frame 1263 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:15,446 - WARNING - No faces in frame 3259 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:16,314 - WARNING - No faces in frame 3760 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:16,316 - WARNING - No faces in frame 1516 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:16,666 - WARNING - No faces in frame 300 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:16,739 - WARNING - No faces in frame 4011 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:16,976 - WARNING - No faces in frame 314 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:17,152 - WARNING - No faces in frame 4262 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:17,298 - WARNING - No faces in frame 1769 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:17,571 - WARNING - No faces in frame 4512 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:17,960 - WARNING - No faces in frame 357 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:18,280 - WARNING - No faces in frame 371 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:18,607 - WARNING - No faces in frame 385 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:18,911 - WARNING - No faces in frame 5264 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:18,919 - WARNING - No faces in frame 400 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:19,229 - WARNING - No faces in frame 414 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:19,305 - WARNING - No faces in frame 2274 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:19,349 - WARNING - No faces in frame 5515 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:19,540 - WARNING - No faces in frame 428 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:19,779 - WARNING - No faces in frame 5766 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:19,851 - WARNING - No faces in frame 443 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1813696328020684800.mp4
+2025-10-23 21:03:19,856 - INFO - Current time: 2025-10-23 21:03:19
+2025-10-23 21:03:20,215 - WARNING - No faces in frame 6017 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:20,284 - WARNING - No faces in frame 2527 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:20,637 - WARNING - No faces in frame 6267 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1595591978888364032.mp4
+2025-10-23 21:03:21,171 - WARNING - No faces in frame 5082 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1415681569709203468.mp4
+2025-10-23 21:03:21,245 - WARNING - No faces in frame 2780 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:21,589 - WARNING - No faces in frame 5270 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_1415681569709203468.mp4
+2025-10-23 21:03:22,180 - WARNING - No faces in frame 3033 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:22,853 - INFO - Current time: 2025-10-23 21:03:22
+2025-10-23 21:03:23,121 - WARNING - No faces in frame 3286 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:23,348 - INFO - Current time: 2025-10-23 21:03:23
+2025-10-23 21:03:24,048 - WARNING - No faces in frame 3538 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:24,986 - WARNING - No faces in frame 3791 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:25,946 - WARNING - No faces in frame 4044 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:26,872 - WARNING - No faces in frame 4297 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:27,790 - WARNING - No faces in frame 4549 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:28,731 - WARNING - No faces in frame 4802 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:29,662 - WARNING - No faces in frame 5055 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:33,611 - WARNING - No faces in frame 6066 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:34,586 - WARNING - No faces in frame 6319 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:35,548 - WARNING - No faces in frame 6572 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:36,480 - WARNING - No faces in frame 6824 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:37,402 - WARNING - No faces in frame 7077 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:38,331 - WARNING - No faces in frame 7330 of /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/selinawangtv_2025-10-16/selinawangtv_video_me8547bf6062ed971bb348e114575faf2923ec26e1.mp4
+2025-10-23 21:03:40,275 - INFO - Current time: 2025-10-23 21:03:40
+2025-10-23 21:03:40,276 - INFO - Total time taken: 0.53 minutes
+2025-10-23 21:03:40,276 - INFO - Face cropping complete!

@@ -1,9 +1,12 @@
 mode: train
 lmdb: True
 dry_run: false
-dataset_root_rgb: './datasets'
-lmdb_dir:  'I:\transform_2_lmdb'
-dataset_json_folder: '/data/home/zhiyuanyan/DeepfakeBenchv2/preprocessing/dataset_json'
+#dataset_root_rgb: './datasets'
+dataset_root_rgb: '/home/user/datasets'
+#lmdb_dir:  'I:\transform_2_lmdb'
+#dataset_json_folder: '/data/home/zhiyuanyan/DeepfakeBenchv2/preprocessing/dataset_json'
+lmdb_dir:  '/home/user/datasets/lmdb'
+dataset_json_folder: '/home/user/OSINTxDeepfakeBench/DeepfakeBench_Clone/preprocessing/dataset_json'
 SWA: False
 save_avg: True
 log_dir: ./logs/training/
@@ -41,3 +44,6 @@ label_dict:
   # Roop
   roop_Real: 0
   roop_Fake: 1
+  # OSINT
+  OSINT_Real: 0
+  OSINT_Fake: 1

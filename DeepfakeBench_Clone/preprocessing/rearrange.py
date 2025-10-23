@@ -1,9 +1,18 @@
+
 # author: Zhiyuan Yan
 # email: zhiyuanyan@link.cuhk.edu.cn
 # date: 2023-03-29
 # description: Data pre-processing script for deepfake dataset.
-
-
+#
+# --- OSINT-Integration (2025-10-23) ---
+# Ergänzt um eine Methode "OSINT", die analog zur Celeb-DF-v2-Verarbeitung arbeitet:
+# - Erzeugt bei jedem Lauf eine neue List_of_testing_videos.txt unter OSINT/Research_Data
+#   (via OSINT/generate_osint_list.py).
+# - Nutzt diese Liste, um eine Datensatz-Struktur mit Labels OSINT_REAL / OSINT_FAKE
+#   aufzubauen. Frames werden – falls vorhanden – unter OSINT/Research_Data/frames/<vid>/
+#   gesucht; fehlt der Frames-Ordner, bleiben die Frames-Listen leer und es wird zusätzlich
+#   der Videopfad (Schlüssel 'video') abgelegt.
+#
 """
 After running this code, it will generates a json file looks like the below structure for re-arrange data.
 
@@ -60,8 +69,109 @@ import re
 import cv2
 import json
 import yaml
+import subprocess
+import sys
 import pandas as pd
 from pathlib import Path
+
+
+def _run_generate_osint_list(repo_root: str,
+                             videos_subdir: str = "videos",
+                             filename: str = "List_of_testing_videos.txt") -> Path:
+    """Rufe OSINT/generate_osint_list.py auf und liefere den erzeugten Dateipfad zurück.
+    Erwartete Struktur: <repo_root>/OSINT/generate_osint_list.py
+                         <repo_root>/OSINT/Research_Data/<videos_subdir>
+    """
+    script = Path(repo_root) / "OSINT" / "generate_osint_list.py"
+    if not script.exists():
+        raise FileNotFoundError(f"Hilfsskript nicht gefunden: {script}")
+    cmd = [
+        sys.executable, str(script),
+        "--root", str(repo_root),
+        "--videos-subdir", videos_subdir,
+        "--filename", filename,
+    ]
+    proc = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    list_path = Path(proc.stdout.strip())
+    if not list_path.exists():
+        raise FileNotFoundError(f"Listendatei wurde nicht erzeugt: {list_path}")
+    return list_path
+
+
+def _parse_celeb_like_line(line: str) -> tuple[str, str]:
+    """Parst eine Zeile im Stil '1 rel/path.mp4' -> (label_num, rel_path_as_is)."""
+    s = line.strip()
+    if not s:
+        return "", ""
+    parts = s.split(maxsplit=1)
+    if len(parts) != 2:
+        return "", ""
+    return parts[0], parts[1]
+
+
+def _safe_list_frames(frames_dir: Path) -> list[str]:
+    """Listet PNG-Frames unterhalb frames_dir, robust gegen kaputte Dateien."""
+    if not frames_dir.exists():
+        return []
+    paths = sorted([str(p) for p in frames_dir.glob("*.png")])
+    # Filtere offensichtlich kaputte Images heraus
+    ok = []
+    for p in paths:
+        try:
+            if cv2.imread(p) is not None:
+                ok.append(p)
+        except Exception:
+            continue
+    return ok
+
+
+def _integrate_osint(dataset_root_path: str,
+                     dataset_name: str,
+                     output_dict: dict,
+                     videos_subdir: str = "videos",
+                     list_filename: str = "List_of_testing_videos.txt") -> None:
+    """Baut einen OSINT-Zweig in output_dict ein.
+
+    - Erstellt/überschreibt die List_of_testing_videos.txt via Hilfsskript.
+    - Liest die Liste ein und konstruiert zwei Label-Buckets: OSINT_REAL und OSINT_FAKE.
+    - Sucht, falls vorhanden, Frames unter OSINT/Research_Data/frames/<vidname>/.
+    """
+    repo_root = dataset_root_path  # hier ist der Projektstamm
+    list_path = _run_generate_osint_list(repo_root, videos_subdir=videos_subdir, filename=list_filename)
+
+    research_data_dir = Path(repo_root) / "OSINT" / "Research_Data"
+    frames_root = research_data_dir / "frames"
+    videos_root = research_data_dir / videos_subdir
+
+    output_dict[dataset_name] = {
+        "OSINT_REAL": {"train": {}, "val": {}, "test": {}},
+        "OSINT_FAKE": {"train": {}, "val": {}, "test": {}},
+    }
+
+    lines = list_path.read_text(encoding="utf-8").splitlines()
+    for line in lines:
+        lbl_num, rel = _parse_celeb_like_line(line)
+        if not rel:
+            continue
+        label = "OSINT_REAL" if lbl_num == "1" else "OSINT_FAKE"
+        # Videoname ohne Endung als Schlüssel, z. B. myfile
+        vidfile = Path(rel).name
+        vidname = Path(vidfile).stem
+
+        # 1) Frames suchen: OSINT/Research_Data/frames/<vidname>/*.png
+        fdir = frames_root / vidname
+        frame_paths = _safe_list_frames(fdir)
+
+        # 2) Fallback: Video-Pfad (falls Frames fehlen)
+        video_path = (research_data_dir / rel).as_posix()
+
+        entry = {"label": label, "frames": frame_paths}
+        # Füge zusätzlich den Videopfad ein, damit Downstream optional darauf zugreifen kann
+        entry["video"] = video_path
+
+        # Für OSINT keine offiziellen Splits: spiegele in val & test; train bleibt leer
+        output_dict[dataset_name][label]["val"][vidname] = entry
+        output_dict[dataset_name][label]["test"][vidname] = entry
 
 
 def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, compression_level='c23', perturbation = 'end_to_end'):
@@ -129,7 +239,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
         else:
             # Für DeepFakeDetection keine Splits laden
             train_json = val_json = test_json = []
-            
+
         # FaceForensics++ real dataset
         if os.path.isdir(dataset_path) and os.path.isdir(os.path.join(dataset_path, 'original_sequences')):
             label = 'Real'
@@ -163,7 +273,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                                         'label': ff_dict['Real'], 'frames': frame_paths
                                     }
 
-                        
+
             actors_root = os.path.join(dataset_path, 'original_sequences', 'actors')
             if dataset_name.startswith('DeepFakeDetection') or os.path.isdir(actors_root):
                 dataset_dict.setdefault('FaceForensics++', {})
@@ -199,7 +309,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                     dataset_dict['FaceForensics++'][ff_dict[label]]['train'] = {}
                     dataset_dict['FaceForensics++'][ff_dict[label]]['test'] = {}
                     dataset_dict['FaceForensics++'][ff_dict[label]]['val'] = {}
-                    
+
                     # Iterate over all compression levels: c23, c40, raw
                     for compression_level in os.scandir(os.path.join(dataset_path, 'manipulated_sequences', label)):
                         if compression_level.is_dir() and compression_level.name in ["c23", "c40", "raw"]:
@@ -232,7 +342,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                                     else:
                                         mode = video_to_mode[video_name]
                                         dataset_dict['FaceForensics++'][ff_dict[label]][mode][compression_level][video_name] = {'label': ff_dict[label], 'frames': frame_paths}
-         
+
 
         # get the DeepfakeDetection dataset from FaceForensics++ dataset
         if dataset_name == 'FaceForensics++':
@@ -275,7 +385,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                                         }}
                         json.dump(data, f)
                         print(f"Finish writing {label}.json")
-    
+
     ## Celeb-DF-v1 dataset
     ## Note: videos in Celeb-DF-v1/2 are not in the same format as in FaceForensics++ dataset
     elif dataset_name == 'Celeb-DF-v1':
@@ -298,7 +408,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                     video_name = video_path.name
                     frame_paths = [os.path.join(video_path, frame.name) for frame in os.scandir(video_path)]
                     dataset_dict[dataset_name][label]['train'][video_name] = {'label': label, 'frames': frame_paths}
-        
+
         # Special case for test&val data of Celeb-DF-v1/2
         with open(os.path.join(dataset_root_path, dataset_name, 'List_of_testing_videos.txt'), 'r') as f:
             lines = f.readlines()
@@ -309,7 +419,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                 label = 'CelebDFv1_fake'
             else:
                 raise ValueError(f"wrong in processing vidname {dataset_name}: {line}")
-            
+
             vidname = line.split('\n')[0].split('/')[-1].split('.mp4')[0]
             frame_paths = glob.glob(
                 os.path.join(dataset_root_path, dataset_name, line.split(' ')[1].split('/')[0], 'frames', vidname, '*png'))
@@ -338,7 +448,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                     video_name = video_path.name
                     frame_paths = [os.path.join(video_path, frame.name) for frame in os.scandir(video_path)]
                     dataset_dict[dataset_name][label]['train'][video_name] = {'label': label, 'frames': frame_paths}
-        
+
         # Special case for test&val data of Celeb-DF-v1/2
         with open(os.path.join(dataset_root_path, dataset_name, 'List_of_testing_videos.txt'), 'r') as f:
             lines = f.readlines()
@@ -349,7 +459,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                 label = 'CelebDFv2_fake'
             else:
                 raise ValueError(f"wrong in processing vidname {dataset_name}: {line}")
-            
+
             vidname = line.split('\n')[0].split('/')[-1].split('.mp4')[0]
             frame_paths = glob.glob(
                 os.path.join(dataset_root_path, dataset_name, line.split(' ')[1].split('/')[0], 'frames', vidname, '*png'))
@@ -388,7 +498,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
         # Special case for val data of DFDCP
         for label in ['DFDCP_Real', 'DFDCP_FakeA', 'DFDCP_FakeB']:
             dataset_dict[dataset_name][label]['val'] = dataset_dict[dataset_name][label]['test']
-    
+
     ## DFDC dataset
     elif dataset_name == 'DFDC':
         dataset_path = os.path.join(dataset_root_path, dataset_name)
@@ -411,7 +521,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                         continue
                     dataset_dict[dataset_name][label]['test'][vidname] = {'label': label, 'frames': frame_paths}
                     dataset_dict[dataset_name][label]['val'] = {'label': label, 'frames': frame_paths}
-            
+
             elif folder.name in ['train']:
                 num_file = 0
                 for dfdc_train_part in os.scandir(os.path.join(dataset_path, folder.name)):
@@ -485,7 +595,7 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                 dataset_dict[dataset_name][label]['train'][video_name] = {'label': label, 'frames': frame_paths}
                 dataset_dict[dataset_name][label]['test'][video_name] = {'label': label, 'frames': frame_paths}
                 dataset_dict[dataset_name][label]['val'][video_name] = {'label': label, 'frames': frame_paths}
-        
+
     ## UADFV dataset
     elif dataset_name == 'UADFV':
         dataset_path = os.path.join(dataset_root_path, dataset_name)
@@ -513,12 +623,26 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
                         dataset_dict[dataset_name][label]['test'][video_name] = {'label': label, 'frames': frame_paths}
                         dataset_dict[dataset_name][label]['val'][video_name] = {'label': label, 'frames': frame_paths}
 
+    ## OSINT / Research_Data dataset
+    elif dataset_name in ('OSINT', 'Research_Data', 'osint'):
+        # Nutze stets den Schlüssel 'OSINT' für den Datensatz im JSON,
+        # aber respektiere dataset_name für die Datei-Ausgabe.
+        _integrate_osint(dataset_root_path,
+                         dataset_name='OSINT',  # Einheitlicher Knotenname
+                         output_dict=dataset_dict,
+                         videos_subdir="videos",
+                         list_filename="List_of_testing_videos.txt")
+
+    else:
+        raise ValueError('Invalid dataset name: {}'.format(dataset_name))
+
     # Convert the dataset dictionary to JSON format and save to file
-    output_file_path = os.path.join(output_file_path, dataset_name + '.json')
-    with open(output_file_path, 'w') as f:
-        json.dump(dataset_dict, f)
+    output_file_path = os.path.join(output_file_path, f"{dataset_name}.json")
+    with open(output_file_path, 'w', encoding='utf-8') as f:
+        json.dump(dataset_dict, f, ensure_ascii=False)
     # print the successfully generated dataset dictionary
     print(f"{dataset_name}.json generated successfully.")
+
 
 if __name__ == '__main__':
     # from config.yaml load parameters
@@ -529,6 +653,7 @@ if __name__ == '__main__':
             config = yaml.safe_load(f)
     except yaml.parser.ParserError as e:
         print("YAML file parsing error:", e)
+        raise
 
     dataset_name = config['rearrange']['dataset_name']['default']
     dataset_root_path = config['rearrange']['dataset_root_path']['default']
