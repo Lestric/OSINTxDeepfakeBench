@@ -73,6 +73,8 @@ import subprocess
 import sys
 import pandas as pd
 from pathlib import Path
+from typing import List, Tuple
+
 
 
 def _run_generate_osint_list(repo_root: str,
@@ -98,7 +100,7 @@ def _run_generate_osint_list(repo_root: str,
     return list_path
 
 
-def _parse_celeb_like_line(line: str) -> tuple[str, str]:
+def _parse_celeb_like_line(line: str) -> Tuple[str, str]:
     """Parst eine Zeile im Stil '1 rel/path.mp4' -> (label_num, rel_path_as_is)."""
     s = line.strip()
     if not s:
@@ -109,7 +111,7 @@ def _parse_celeb_like_line(line: str) -> tuple[str, str]:
     return parts[0], parts[1]
 
 
-def _safe_list_frames(frames_dir: Path) -> list[str]:
+def _safe_list_frames(frames_dir: Path) -> List[str]:
     """Listet PNG-Frames unterhalb frames_dir, robust gegen kaputte Dateien."""
     if not frames_dir.exists():
         return []

@@ -2,8 +2,8 @@ mode: test
 lmdb: true
 rgb_dir: ''
 ####hier kann ich für test durchläufe die lmdb verlinken
-#lmdb_dir:  '/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/lmdb' # hier Pfad ändern
-lmdb_dir:  '/home/user/datasets/lmdb'
+lmdb_dir:  '/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/lmdb' # hier Pfad ändern
+#lmdb_dir:  '/home/user/datasets/lmdb'
 dataset_json_folder: '/home/user/OSINTxDeepfakeBench/DeepfakeBench_Clone/preprocessing/dataset_json'
 label_dict:
   # DFD
@@ -39,5 +39,5 @@ label_dict:
   roop_Real: 0
   roop_Fake: 1
   #Lestric OSINT für Bewertung zwei variablen angeben
-  OSINT_Real: 0
-  OSINT_Fake: 1
+  OSINT_REAL: 0
+  OSINT_FAKE: 1
