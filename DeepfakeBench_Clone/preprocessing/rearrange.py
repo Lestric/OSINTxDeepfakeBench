@@ -142,8 +142,18 @@ def _integrate_osint(dataset_root_path: str,
     list_path = _run_generate_osint_list(repo_root, videos_subdir=videos_subdir, filename=list_filename)
 
     research_data_dir = Path(repo_root) / "OSINT" / "Research_Data"
-    frames_root = research_data_dir / "frames"
+
+    # Robuste Auflösung des Frames-Wurzelpfads:
+    # 1) .../Research_Data/videos/frames  (dein aktuelles Layout)
+    # 2) .../Research_Data/frames         (Fallback, ältere Variante)
+    frames_root_candidates = [
+        research_data_dir / videos_subdir / "frames",
+        research_data_dir / "frames",
+    ]
+    frames_root = next((p for p in frames_root_candidates if p.exists()), frames_root_candidates[0])
+
     videos_root = research_data_dir / videos_subdir
+
 
     output_dict[dataset_name] = {
         "OSINT_REAL": {"train": {}, "val": {}, "test": {}},
@@ -160,11 +170,38 @@ def _integrate_osint(dataset_root_path: str,
         vidfile = Path(rel).name
         vidname = Path(vidfile).stem
 
-        # 1) Frames suchen: OSINT/Research_Data/frames/<vidname>/*.png
-        fdir = frames_root / vidname
-        frame_paths = _safe_list_frames(fdir)
+        # 1) Frames suchen: bevorzugt nach /.../<frames_root>/<vidname>/; 
+        #    falls nicht vorhanden, versuche Alternativen.
+        candidates = []
 
-        # 2) Fallback: Video-Pfad (falls Frames fehlen)
+        # a) frames/<vidname>
+        candidates.append(frames_root / vidname)
+
+        # b) frames/<basename des Videopfads>  (z. B. falls vidname != dateistamm)
+        vid_basename = Path(rel).stem
+        if vid_basename != vidname:
+            candidates.append(frames_root / vid_basename)
+
+        # c) frames direkt (falls ohne Unterordner gespeichert)
+        candidates.append(frames_root)
+
+        frame_paths = []
+        for cand in candidates:
+            if cand.is_dir():
+                fps = _safe_list_frames(cand if cand == frames_root else cand)
+                # wenn cand == frames_root (ohne Unterordner), nur PNGs nehmen,
+                # die zu diesem Video gehören (optional per Präfix/Pattern).
+                if cand == frames_root and fps:
+                    # Versuche, nur die PNGs dieses Videos zu greifen (heuristisch):
+                    prefix = f"{vidname}_"
+                    fps_filtered = [p for p in fps if (Path(p).name.startswith(prefix) or Path(p).parent.name in (vidname, vid_basename))]
+                    frame_paths = sorted(fps_filtered) if fps_filtered else fps  # fallback: alle
+                else:
+                    frame_paths = fps
+            if frame_paths:
+                break
+
+        # 2) Videopfad immer mitschreiben (für Fallbacks downstream)
         video_path = (research_data_dir / rel).as_posix()
 
         entry = {"label": label, "frames": frame_paths}

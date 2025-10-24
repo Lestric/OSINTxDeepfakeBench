@@ -238,7 +238,11 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
                 if video_info['label'] not in self.config['label_dict']:
                     raise ValueError(f'Label {video_info["label"]} is not found in the configuration file.')
                 lb = self.config['label_dict'][video_info['label']]
-                frame_paths = video_info['frames']
+                frame_paths = video_info.get('frames', []) or []
+                if len(frame_paths) == 0:
+                # OSINT-Kompatibilität: skip, wenn noch keine Frames extrahiert wurden
+                    continue
+
 
                 if '\\' in frame_paths[0]:
                     frame_paths = sorted(frame_paths, key=lambda x: int(x.split('\\')[-1].split('.')[0]))

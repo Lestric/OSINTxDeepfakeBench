@@ -1,5 +1,5 @@
 mode: test
-lmdb: true
+lmdb: false
 rgb_dir: ''
 ####hier kann ich für test durchläufe die lmdb verlinken
 lmdb_dir:  '/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/lmdb' # hier Pfad ändern
