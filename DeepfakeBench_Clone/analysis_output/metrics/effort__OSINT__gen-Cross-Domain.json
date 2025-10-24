@@ -4,11 +4,11 @@
   "exp": "gen",
   "tag": "Cross-Domain",
   "mode": "frame",
-  "count_total": 8,
-  "count_used": 8,
+  "count_total": 6,
+  "count_used": 6,
   "metrics": {
     "auc": NaN,
-    "acc": 0.625,
+    "acc": 0.0,
     "eer": NaN,
     "ap": 0.0
   },

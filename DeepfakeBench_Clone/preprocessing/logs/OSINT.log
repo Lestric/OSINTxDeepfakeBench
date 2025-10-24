@@ -162,3 +162,9 @@
 2025-10-24 00:45:18,807 - INFO - Current time: 2025-10-24 00:45:18
 2025-10-24 00:45:18,807 - INFO - Total time taken: 0.53 minutes
 2025-10-24 00:45:18,807 - INFO - Face cropping complete!
+2025-10-24 11:51:01,190 - INFO - 3 videos found in /home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos
+2025-10-24 11:51:21,728 - INFO - Current time: 2025-10-24 11:51:21
+2025-10-24 11:51:22,217 - INFO - Current time: 2025-10-24 11:51:22
+2025-10-24 11:51:22,225 - INFO - Current time: 2025-10-24 11:51:22
+2025-10-24 11:51:22,225 - INFO - Total time taken: 0.35 minutes
+2025-10-24 11:51:22,225 - INFO - Face cropping complete!

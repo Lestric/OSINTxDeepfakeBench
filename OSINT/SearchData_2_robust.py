@@ -3,6 +3,7 @@ import shutil
 import logging
 import subprocess
 from datetime import date
+from pathlib import Path
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -14,6 +15,63 @@ from selenium.webdriver.support import expected_conditions as EC
 # Logging einrichten
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
+
+# -------------------------------------------------------------------
+# Pfade (zentral)
+# -------------------------------------------------------------------
+HOME = Path.home()
+RD_ROOT = HOME / "OSINTxDeepfakeBench" / "OSINT" / "Research_Data"
+VIDEOS_DIR = RD_ROOT / "videos"
+LMDB_DIR = RD_ROOT / "lmdb"
+OSINT_LIST = RD_ROOT / "List_of_testing_videos.txt"
+
+# -------------------------------------------------------------------
+# Aufräumen: Inhalte in videos, lmdb, sowie List_of_testing_videos.txt
+# -------------------------------------------------------------------
+def _remove_dir_contents(dir_path: Path) -> None:
+    """
+    Löscht alle Dateien/Unterverzeichnisse IN einem Verzeichnis (nicht das Verzeichnis selbst).
+    Legt das Verzeichnis an, falls es nicht existiert.
+    """
+    try:
+        dir_path.mkdir(parents=True, exist_ok=True)
+    except Exception as e:
+        logger.warning(f"Konnte Verzeichnis nicht anlegen: {dir_path} ({e})")
+        return
+
+    for entry in dir_path.iterdir():
+        try:
+            if entry.is_file() or entry.is_symlink():
+                entry.unlink(missing_ok=True)
+            elif entry.is_dir():
+                shutil.rmtree(entry, ignore_errors=True)
+        except Exception as e:
+            logger.warning(f"Konnte Eintrag nicht löschen: {entry} ({e})")
+
+def clean_research_data() -> None:
+    """
+    Löscht Inhalte in:
+      - ~/OSINTxDeepfakeBench/OSINT/Research_Data/videos
+      - ~/OSINTxDeepfakeBench/OSINT/Research_Data/lmdb
+    sowie die Datei:
+      - ~/OSINTxDeepfakeBench/OSINT/Research_Data/List_of_testing_videos.txt
+    """
+    logger.info("Starte Bereinigung der Research_Data-Verzeichnisse …")
+    _remove_dir_contents(VIDEOS_DIR)
+    logger.info(f"Inhalte in {VIDEOS_DIR} gelöscht (Verzeichnis besteht weiter).")
+
+    _remove_dir_contents(LMDB_DIR)
+    logger.info(f"Inhalte in {LMDB_DIR} gelöscht (Verzeichnis besteht weiter).")
+
+    if OSINT_LIST.exists():
+        try:
+            OSINT_LIST.unlink()
+            logger.info(f"Datei gelöscht: {OSINT_LIST}")
+        except Exception as e:
+            logger.warning(f"Konnte Datei nicht löschen: {OSINT_LIST} ({e})")
+    else:
+        logger.info(f"Keine Liste zu löschen (nicht gefunden): {OSINT_LIST}")
+    logger.info("Bereinigung abgeschlossen.")
 
 # ------------------------------
 # WebDriver-Setup (Headless)
@@ -28,9 +86,6 @@ def setup_driver():
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--lang=de-DE,de")
     options.add_argument("user-agent=Mozilla/5.0 ... Chrome/126 Safari/537.36")
-
-    # Falls erforderlich, Binary explizit setzen:
-    # options.binary_location = "/usr/bin/google-chrome"  # oder "/usr/bin/chromium-browser"
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 # ------------------------------
@@ -50,7 +105,7 @@ def scroll_and_collect_articles(driver, max_scroll_attempts=20, wait_secs=5):
             break
         current = driver.find_elements(By.CSS_SELECTOR, "article")
         if len(current) == previous_count:
-            logger.info("Keine Zunahme der Tweets Abbruch des Scrollens.")
+            logger.info("Keine Zunahme der Tweets – Abbruch des Scrollens.")
             break
         previous_count = len(current)
         logger.info(f"Scroll {attempt}: Tweets insgesamt {previous_count}")
@@ -62,11 +117,11 @@ def scroll_and_collect_articles(driver, max_scroll_attempts=20, wait_secs=5):
 def extract_status_urls_with_strategies(driver):
     """
     Liefert eine (geordnete) Liste an Status-URLs, die nach vier Strategien gesammelt wird:
-      A) Es existiert ein <video>-Tag im Artikel.
+      A) <video>-Tag im Artikel.
       B) Link-Extraktion + lokaler Video-Nachweis im selben Artikel.
       C) Alternative Selektoren (aria-label enthält 'Video', XPath auf //video).
       D) Fallback: Alle status-Links (yt-dlp prüft selbst).
-    Reihenfolge wird beibehalten; Duplikate werden vermieden.
+    Reihenfolge bleibt erhalten; Duplikate werden vermieden.
     """
     seen = set()
     ordered_urls = []
@@ -86,7 +141,7 @@ def extract_status_urls_with_strategies(driver):
         except Exception:
             return None
 
-    # ---------------- A) <video>-Tag im Artikel ----------------
+    # A) <video>-Tag
     for art in articles:
         try:
             videos = art.find_elements(By.TAG_NAME, "video")
@@ -96,8 +151,7 @@ def extract_status_urls_with_strategies(driver):
         except Exception:
             continue
 
-    # ---------------- B) Link + Video-Nachweis im selben Artikel ----------------
-    # (strengere Variante als A, faktisch schon durch A abgedeckt  hier exemplarisch via CSS/XPath)
+    # B) Link + Video-Nachweis
     for art in articles:
         try:
             url = find_status_link(art)
@@ -110,11 +164,9 @@ def extract_status_urls_with_strategies(driver):
         except Exception:
             continue
 
-    # ---------------- C) Alternative Selektoren ----------------
-    # C1: aria-label mit 'Video'
+    # C1) aria-label Hinweise
     for art in articles:
         try:
-            # X/Twitter nutzt dynamische Strukturen; aria-label-Hinweise sind relativ stabil
             hint = art.find_elements(By.CSS_SELECTOR, "[aria-label*='Video'], [aria-label*='video']")
             if hint:
                 url = find_status_link(art)
@@ -122,7 +174,7 @@ def extract_status_urls_with_strategies(driver):
         except Exception:
             continue
 
-    # C2: XPath-Fallback auf <video>-Tags (robust gegen verschachtelte Strukturen)
+    # C2) XPath-Fallback
     for art in articles:
         try:
             vids = art.find_elements(By.XPATH, ".//video")
@@ -132,8 +184,7 @@ def extract_status_urls_with_strategies(driver):
         except Exception:
             continue
 
-    # ---------------- D) Fallback: Alle status-Links (yt-dlp filtert) ----------------
-    # Ergänzt ggf. übersehene Tweets; yt-dlp erkennt selbst, ob ein Video vorhanden ist.
+    # D) Fallback: alle Status-Links
     try:
         all_status_links = driver.find_elements(By.CSS_SELECTOR, "a[href*='/status/']")
         for a in all_status_links:
@@ -161,7 +212,6 @@ def run_ytdlp(url, out_template, cookies_from_browser=None, quiet=True):
 
     result = subprocess.run(args, capture_output=True, text=True)
     if result.returncode != 0:
-        # Debug-Ausgabe bei Bedarf:
         logger.debug(f"yt-dlp rc={result.returncode} url={url} stderr={result.stderr.strip()}")
         return False
     return True
@@ -175,17 +225,15 @@ def download_videos(username, max_videos=10, cookies_from_browser=None):
     try:
         # Zielverzeichnis
         heutiges_datum = date.today().strftime("%Y-%m-%d")
-        base_dir = os.path.join(os.path.expanduser("~"), "OSINTxDeepfakeBench/OSINT/Research_Data/videos")
-        save_path = os.path.join(base_dir, f"{username}_{heutiges_datum}")
-        os.makedirs(save_path, exist_ok=True)
+        base_dir = VIDEOS_DIR  # bereits zentral definiert
+        save_path = base_dir / f"{username}_{heutiges_datum}"
+        save_path.mkdir(parents=True, exist_ok=True)
 
         # Seite öffnen
         driver = setup_driver()
         url = f"https://x.com/{username}/media"
         logger.info(f"Öffne Profil: {url}")
         driver.get(url)
-        
-
 
         # Erste Artikel abwarten
         WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.CSS_SELECTOR, "article")))
@@ -199,7 +247,7 @@ def download_videos(username, max_videos=10, cookies_from_browser=None):
         for tweet_url in candidate_urls:
             if downloaded >= max_videos:
                 break
-            out_tmpl = os.path.join(save_path, f"{username}_video_%(id)s.%(ext)s")
+            out_tmpl = str(save_path / f"{username}_video_%(id)s.%(ext)s")
             ok = run_ytdlp(tweet_url, out_tmpl, cookies_from_browser=cookies_from_browser, quiet=True)
             if ok:
                 downloaded += 1
@@ -224,6 +272,10 @@ def download_videos(username, max_videos=10, cookies_from_browser=None):
 # CLI
 # ------------------------------
 if __name__ == "__main__":
+    # 1) ZUERST: Bereinigung durchführen
+    clean_research_data()
+
+    # 2) Normale Aktivität: neue Videos suchen und speichern
     target_username = input("Bitte gib den Twitter-Username ein: ").strip()
     # Falls Sie eingeloggt sind und X-Inhalte sonst beschränkt sind, aktivieren Sie Cookies:
     # downloaded = download_videos(target_username, max_videos=10, cookies_from_browser="chrome")
