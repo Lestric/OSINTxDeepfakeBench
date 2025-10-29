@@ -1,0 +1,7 @@
+image_path,y_true,y_score,y_pred,decision
+/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/frames/Aufzeichnung 2025-10-22 Live-Test-3-Face20+FaceEnhancer/000.png,0,0.967976,1,FAKE
+/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/frames/Aufzeichnung 2025-10-22 Live-Test-3-Face20+Mundbewegungen/062.png,0,0.982378,1,FAKE
+/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/frames/Aufzeichnung 2025-10-22 Live-Test-2-Face5/070.png,0,0.988463,1,FAKE
+/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/frames/Aufzeichnung 2025-10-22 Live-Test-3-Face20+Mundbewegungen/000.png,0,0.963832,1,FAKE
+/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/frames/Aufzeichnung 2025-10-22 Live-Test-3-Face20+FaceEnhancer/082.png,0,0.980795,1,FAKE
+/home/user/OSINTxDeepfakeBench/OSINT/Research_Data/videos/frames/Aufzeichnung 2025-10-22 Live-Test-2-Face5/000.png,0,0.960112,1,FAKE
