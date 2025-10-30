@@ -1,0 +1,18 @@
+{
+  "detector": "effort",
+  "dataset": "FaceForensics++",
+  "exp": "gen",
+  "tag": "baseline",
+  "mode": "frame",
+  "count_total": 7192,
+  "count_used": 7192,
+  "metrics": {
+    "auc": 0.9368952021282408,
+    "acc": 0.8754171301446051,
+    "eer": 0.1356050069541029,
+    "ap": 0.9842890997015742
+  },
+  "y_true_path": "analysis_outputs/metrics/effort__FaceForensics++__baseline_y_true.npy",
+  "y_score_path": "analysis_outputs/metrics/effort__FaceForensics++__baseline_y_score.npy",
+  "feat_path": "analysis_outputs/metrics/effort__FaceForensics++__baseline_feat.npy"
+}

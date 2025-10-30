@@ -1,0 +1,18 @@
+{
+  "detector": "effort",
+  "dataset": "UADFV",
+  "exp": "gen",
+  "tag": "cross-domain",
+  "mode": "frame",
+  "count_total": 784,
+  "count_used": 784,
+  "metrics": {
+    "auc": 0.9629646501457726,
+    "acc": 0.8290816326530612,
+    "eer": 0.0663265306122449,
+    "ap": 0.9771076799319998
+  },
+  "y_true_path": "analysis_outputs/metrics/effort__UADFV__gen-cross-domain_y_true.npy",
+  "y_score_path": "analysis_outputs/metrics/effort__UADFV__gen-cross-domain_y_score.npy",
+  "feat_path": "analysis_outputs/metrics/effort__UADFV__gen-cross-domain_feat.npy"
+}

@@ -1,0 +1,18 @@
+{
+  "detector": "effort",
+  "dataset": "FaceForensics++",
+  "exp": "gen",
+  "tag": "within-domain",
+  "mode": "frame",
+  "count_total": 1400,
+  "count_used": 1400,
+  "metrics": {
+    "auc": 0.9265752551020409,
+    "acc": 0.8521428571428571,
+    "eer": 0.15,
+    "ap": 0.9810915260411629
+  },
+  "y_true_path": "analysis_outputs/metrics/effort__FaceForensics++__gen-within-domain_y_true.npy",
+  "y_score_path": "analysis_outputs/metrics/effort__FaceForensics++__gen-within-domain_y_score.npy",
+  "feat_path": "analysis_outputs/metrics/effort__FaceForensics++__gen-within-domain_feat.npy"
+}
